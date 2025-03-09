@@ -88,3 +88,17 @@ Resources:
       Path: "/"
       Roles:
         - !Ref WebAppInstanceRole
+
+  WebAppGroup:
+    Type: AWS::AutoScaling::AutoScalingGroup
+    Properties:
+      VPCZoneIdentifier:
+        - Fn::ImportValue: !Sub "${EnvironmentName}-PRIV-NETS"
+      LaunchTemplate:
+        LaunchTemplateId: !Ref WebAppLaunchTemplate
+        Version: !GetAtt WebAppLaunchTemplate.LatestVersionNumber
+      MinSize: "1"
+      DesiredCapacity: "1"
+      MaxSize: "3"
+      TargetGroupARNs:
+        - Ref: WebAppTargetGroup
