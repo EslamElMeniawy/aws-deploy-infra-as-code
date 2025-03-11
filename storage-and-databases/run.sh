@@ -23,11 +23,13 @@ then
         --stack-name udacity-parametrizing-scripts-lesson \
         --template-file vpc.yml
 fi
+
 if [ $1 == "delete" ]
 then
     aws cloudformation delete-stack \
         --stack-name udacity-parametrizing-scripts-lesson \
 fi
+
 if [ $1 == "preview" ]
 then
     aws cloudformation deploy \
