@@ -8,3 +8,4 @@ jsconfig.json
 
 # Qodo Gen (Codium VS Code)
 .qodo/
+.qodo
